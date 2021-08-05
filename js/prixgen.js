@@ -2,7 +2,7 @@ $(document).ready(function () {
     
     "use strict";
     
-    var recap_qte;
+    var recap_qte = 0;
     
     //$("#mate").attr('disabled', true);
     $("#ecri_row_oui").hide();
@@ -19,7 +19,7 @@ $(document).ready(function () {
     
     // quantité
     $("#quantite").on('change', function () {
-        var recap_qte = $("#quantite").val();
+        recap_qte = $("#quantite").val();
         $("#recap_qte").html(recap_qte);
         
         var the_select = $("#nbquadri");
@@ -82,8 +82,7 @@ $(document).ready(function () {
      });    //-- finition
     
     // impression
-    $('[name="impression"]').on('click', function () {
-        
+    $('[name="impression"]').on('click', function (e) {
         var type_imp = $('input[name="impression"]:checked').val();
         $("#type_imp").html(type_imp);
 

@@ -82,7 +82,6 @@ $(document).ready(function () {
     
     // impression
     $('[name="impression"]').on('click', function () {
-        
         type_imp = $('input[name="impression"]:checked').val();
         $("#type_imp").html(type_imp);
 
@@ -324,7 +323,7 @@ $(document).ready(function () {
             table:'wp_pri_cabqr1a3000',
         },
         function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            //alert("Data: " + data + "\nStatus: " + status);
             $('#prix_qr').html(data);
         });
         

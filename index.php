@@ -1,16 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Custom Price</title>
+<?php
+/**
+ * Plugin Name: cartepvctwo
+ * Plugin URI: null
+ * Description: recalc prix
+ * Version: 1.0.0
+ * Author: Automattic
+ * Author URI: null
+ * Requires PHP: 5.0
+  */
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+  define('VER','1.0.0');
+function addjquery(){
+	wp_enqueue_script( 'addjquery',plugin_dir_url( __FILE__ ).'js/jquery.min.js','',VER );
+}
+add_action("wp_enqueue_scripts", "addjquery");
+function bootsjs(){
+	wp_enqueue_script( 'bootsjs',plugin_dir_url( __FILE__ ).'js/bootstrap.min.js','',VER );
+}
+add_action("wp_enqueue_scripts", "bootsjs");
 
-    <!-- Loading Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link href="css/tie_style.css" rel="stylesheet">
-  </head>
-  <body>
+function bootsjsbundle(){
+	wp_enqueue_script( 'bootsjsbundle',plugin_dir_url( __FILE__ ).'js/bootstrap.bundle.min.js','',VER );
+}
+add_action("wp_enqueue_scripts", "bootsjsbundle");
+
+function prixgenjs(){
+	wp_enqueue_script( 'prixgenjs',plugin_dir_url( __FILE__ ).'js/prixgen.js','',VER );
+}
+add_action("wp_enqueue_scripts", "prixgenjs");
+
+function bootscss(){
+	wp_enqueue_style( 'bootscss',plugin_dir_url( __FILE__ ).'css/bootstrap.min.css.css','',VER );
+}
+add_action("wp_enqueue_scripts", "bootscss");
+
+function tie_style(){
+	wp_enqueue_style( 'tie_style',plugin_dir_url( __FILE__ ).'css/tie_style.css','',VER );
+}
+add_action("wp_enqueue_scripts", "tie_style");
+
+function appli(){
+?>
     <div class="container">
         <div class="demo-headline">
             <h4>
@@ -460,12 +490,6 @@
         </div>
 
     </div> <!-- /container -->
-
-    
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-      
-    <script src="js/prixgen.js"></script>
-  </body>
-</html>
+<?php
+}
+add_action('wp_footer','appli');

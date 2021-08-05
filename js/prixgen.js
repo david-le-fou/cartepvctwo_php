@@ -17,7 +17,9 @@ $(document).ready(function () {
     $("#perso_nom_oui").hide();
     $("#info_row_oui").hide();
     
+    var me_url = $("#mon_url").attr("me_url");
     // quantité
+
     $("#quantite").on('change', function () {
         recap_qte = $("#quantite").val();
         $("#recap_qte").html(recap_qte);
@@ -95,7 +97,7 @@ $(document).ready(function () {
         
         if (finit == "brillante"){
             
-            $.post("load_data.php",
+            $.post(me_url,
             {
                 nombre: nombre,
                 table:'wp_pri_quadri1a3000',
@@ -110,7 +112,7 @@ $(document).ready(function () {
             
             if (type_imp == "recto"){
                 
-                $.post("load_data.php",
+                $.post(me_url,
                 {
                     nombre: nombre,
                     table:'wp_pri_materecto',
@@ -123,7 +125,7 @@ $(document).ready(function () {
             }
             else{
                 
-                $.post("load_data.php",
+                $.post(me_url,
                 {
                     nombre: nombre,
                     table:'wp_pri_materecver',
@@ -171,7 +173,7 @@ $(document).ready(function () {
         var nombre = recap_qte;
         //console.log(recap_qte)
        
-        $.post("load_data.php",
+        $.post(me_url,
         {
             nombre: nombre,
             table:'wp_pri_zoneecri',
@@ -213,7 +215,7 @@ $(document).ready(function () {
         var nombre = recap_qte;
         //console.log(recap_qte)
 
-        $.post("load_data.php",
+        $.post(me_url,
         {
             nombre: nombre,
             table:'wp_pri_overlay1a3000',
@@ -327,7 +329,7 @@ $(document).ready(function () {
         var nombre = recap_qte;
         //console.log(recap_qte)
 
-        $.post("load_data.php",
+        $.post(me_url,
         {
             nombre: nombre,
             table:'wp_pri_cabqr1a3000',

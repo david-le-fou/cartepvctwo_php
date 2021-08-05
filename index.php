@@ -39,8 +39,9 @@ function tie_style(){
 }
 add_action("wp_enqueue_scripts", "tie_style");
 
-function appli(){
+function appli(){    
 ?>
+    <input type="text" name="mon_url" id="mon_url" me_url="<?php echo plugin_dir_url( __FILE__ ).'load_data.php'?>">
     <div class="container">
         <div class="demo-headline">
             <h4>

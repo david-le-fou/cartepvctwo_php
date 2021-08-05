@@ -1,25 +1,16 @@
  <?php  
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db = "xxxx";
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} 
-catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-
+define( 'BLOCK_LOAD', true );
+define('nom_site','cartepvctwo');
+require_once( $_SERVER['DOCUMENT_ROOT'] . '/'.nom_site.'/wp-config.php' );
+require_once( $_SERVER['DOCUMENT_ROOT'] .'/'.nom_site.'/wp-includes/wp-db.php' );
+$wpdb = new wpdb( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
 if(isset($_POST["nombre"]))  
  {  
       if($_POST["nombre"] != '')  
       {   
           $nbr = $_POST['nombre'];
-          $q =$conn->prepare("SELECT * FROM ".$_POST["table"]." WHERE nombre=$nbr");
-          $q->execute();
-          foreach($q->fetchAll() as $k=>$v):
+          $result = $wpdb->get_results("SELECT * FROM ".$_POST['table']."WHERE nombre=$nbr");
+          foreach($result as $k=>$v):
             $data[$k]=$v;
           endforeach;
       }

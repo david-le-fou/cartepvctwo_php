@@ -99,7 +99,7 @@ function appli(){
                           <td>
                               <button type="button" class="alert alert-light" id="SouTot">Calculer Sous Total</button>
                           </td>
-                          <td><span id="amount"></span> <span>(Hors FDP)</span></td>
+                          <td><span id="amount_total_calcul"></span> <span>(Hors FDP)</span></td>
                         </tr> 
                       </tbody>
                   </table>

@@ -380,11 +380,13 @@ $(document).ready(function () {
                 var prix_info = $("#prix_info").html(prix_rec);
                 console.log(prix_info);
                 console.log(6)
+                $("#prix_info").html(prix_rec);
                 $("#prix_info").attr('prix',prix_rec);
             }
             else{
                 $("#prix_info").html(prix_recver);
                 var prix_info = $("#prix_info").html(prix_recver);
+                $("#prix_info").html(prix_recver);
                 $("#prix_info").attr('prix',prix_recver);
                 console.log(prix_info);
                 console.log(5)
@@ -400,6 +402,7 @@ $(document).ready(function () {
                 if (type_imp == "recto"){
                     $("#prix_info").html(prix_rec);
                     var prix_info = $("#prix_info").html(prix_rec);
+                    $("#prix_info").html(prix_rec);
                     $("#prix_info").attr('prix',prix_rec);
                     console.log(prix_info);
                     console.log(4)
@@ -407,6 +410,7 @@ $(document).ready(function () {
                 else{
                     $("#prix_info").html(prix_recver);
                     var prix_info = $("#prix_info").html(prix_recver);
+                    $("#prix_info").html(prix_recver);
                     $("#prix_info").attr('prix',prix_recver);
                     console.log(prix_info);
                     console.log(3)
@@ -459,18 +463,29 @@ $(document).ready(function () {
         }
         
     }); //-- infographie
-    
     // Sous Total
+    var prix_imp = $("#prix_imp").attr('prix');
+    var prix_zone = $("#prix_zone").attr('prix');
+    var prix_over = $("#prix_over").attr('prix');
+    var prix_qr = $("#prix_qr").attr('prix');
+    var prix_info = $("#prix_info").attr('prix');
+    var soustotal;
+    
+    function replace_(prix){
+        var regex = /,/i;
+        return parseFloat(prix.replace(regex,"."));
+    }
+
     $("#SouTot").on('click', function () {
-        var prix_imp = $("#prix_imp").attr('prix');
-		var prix_zone = $("#prix_zone").attr('prix');
-		var prix_over = $("#prix_over").attr('prix');
-		var prix_qr = $("#prix_qr").attr('prix');
-		var prix_info = $("#prix_info").attr('prix');
-        
-        var soustotal = parseFloat(prix_imp) + parseFloat(prix_zone) + parseFloat(prix_over) + parseFloat(prix_qr) + parseFloat(prix_info);
-        alert (soustotal);
-        $("#amount").html(soustotal);
+
+        prix_imp = replace_($("#prix_imp").attr('prix'));
+        prix_zone = replace_($("#prix_zone").attr('prix'));
+        prix_over = replace_($("#prix_over").attr('prix'));
+        prix_qr = replace_($("#prix_qr").attr('prix'));
+        prix_info = replace_($("#prix_info").attr('prix'));
+        soustotal = prix_imp + prix_zone + prix_over + prix_qr + prix_info;
+        $("#amount_total_calcul").html(soustotal)
+       
     });
     
 });
